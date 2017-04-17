@@ -1,0 +1,58 @@
+<div class="col-md-3 ">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            设备分组
+            <a class="btn btn-default pull-right btn-xs" ng-click="showAddGroupModal()" href="javascript:;">添加分组</a>
+        </div>
+        <div class="panel-body devices_group_left_bar">
+            <ul class="list-group">
+                <li ng-class="{true: 'list-group-item list-group-item-info', false: 'list-group-item'}[-1==selected_group_id]" ng-click="clickSelectGroupItem(-1)">
+                    <span class="badge">{{total_no_group_devices}}</span> 未分组设备
+                </li>
+                <li class="list-group-item" ng-class="{true: 'list-group-item list-group-item-info', false: 'list-group-item'}[group.group_id==selected_group_id]"
+                    ng-repeat="group in groups" ng-click="clickSelectGroupItem(group.group_id)">
+                    <span class="badge">{{group.devices_count}}</span> {{group.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="panel-footer" style="min-height:43px">
+            <a class="btn btn-default btn-xs" ng-click="showModifyGroupModal()" href="javascript:;" ng-show="selected_group_id>0">修改分组</a>
+            <a class="btn btn-default pull-right btn-xs" ng-click="deleteGroup(selected_group_id)" href="javascript:;" ng-show="selected_group_id>0">删除分组</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-9">
+    <div class="well well-sm panel-default">
+        选中设备数：{{selected_devices_count}}
+        <span class="pull-right">
+            <a class="btn btn-default btn-xs" href="javascript:;" role="button" ng-show="selected_group_id==-1" ng-click="addToGroupModal()">添加到分组</a>
+            <a class="btn btn-default btn-xs" href="javascript:;" role="button" ng-show="selected_group_id!=-1" ng-click="deleteFromGroup()">从分组中移除</a>
+            |
+            <button class="btn btn-default btn-xs" ng-click="addCurrentGroupDevicesToControl()">添加该组设备到群控</button>
+		    <button class="btn btn-default btn-xs" ng-click="gotoControl()">开始控制</button>
+        </span>
+    </div>
+    <div data-toggle="checkbox">
+        <div class="devices_group_item_container" ng-repeat="device in devices">
+            <a href="javascript:;" class="thumbnail" ng-click="addToSelectedDevice(device.serialNumber)" ng-mouseenter="is_show_ok_icon_map[device.serialNumber]=true" ng-mouseleave="is_show_ok_icon_map[device.serialNumber]=false">
+                <img src="img/smartphone.svg" alt="开始控制手机" width="140px" height="140px" />
+                <div class="dashboard_device_id">{{device.serialNumber}}</div>
+                <span class="glyphicon glyphicon-ok ok_icon" ng-show="selected_devices[device.serialNumber] || is_show_ok_icon_map[device.serialNumber]"></span>
+            </a>
+
+            <a ng-if="!control_devices[device.serialNumber]" href="javascript:;" class="btn btn-sm btn-default" role="button" ng-click="addToGroup(device.serialNumber)"><span class="glyphicon glyphicon-plus"></span>&nbsp;群控</a>
+            <span ng-if="control_devices[device.serialNumber]">
+                <a href="javascript:;" class="btn btn-sm btn-success" role="button" ng-click="removeFromGroup(device.serialNumber)"><span class="glyphicon glyphicon-minus"></span>&nbsp;群控</a>
+
+            <a ng-if="main_control_device_serial != device.serialNumber" href="javascript:;" class="btn btn-sm btn-primary pull-right"
+                role="button" ng-click="toggleMainControl(device.serialNumber)">主控</a>
+            <a ng-if="main_control_device_serial == device.serialNumber" href="javascript:;" class="btn btn-sm btn-warning pull-right"
+                role="button" ng-click="toggleMainControl(device.serialNumber)">
+                <span class="glyphicon glyphicon-ok"></span> 主控
+            </a>
+            </span>
+        </div>
+
+    </div>
+</div>

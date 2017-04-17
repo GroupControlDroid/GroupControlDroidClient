@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-3">
+		<p><b>Serial：</b>{{serialNumber}}</p>
+	</div>
+	<div class="col-md-3">
+		<p><b>串号：</b>{{deviceID}}</p>
+	</div>
+	<div class="col-md-3">
+		<p><b>制式：</b>{{phoneType}}</p>
+	</div>
+	<div class="col-md-3">
+		<p><b>型号：</b>{{productModel}}</p>
+	</div>
+</div>
+<hr/>
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default" ng-click="btnSendKey('KEYCODE_POWER')">
+			<span class="glyphicon glyphicon-off"></span>&nbsp;电源
+		</button>
+	</div>
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default" ng-click="btnSendKey('KEYCODE_VOLUME_UP')">
+			<span class="glyphicon glyphicon-plus"></span>&nbsp;音量
+		</button>
+		<button type="button" class="btn btn-default" ng-click="btnSendKey('KEYCODE_VOLUME_DOWN')">
+			<span class="glyphicon glyphicon-minus"></span>&nbsp;音量
+		</button>
+	</div>
+</div>
+<hr/>
+<form>
+	<b>上传安装apk：</b>
+	<button type="button" class="btn btn-default" ngf-select ng-model="files" ngf-multiple="false">选择文件</button>
+	<button type="submit" class="btn btn-default" ng-click="submit()">上传安装</button>
+</form>
+<hr/>

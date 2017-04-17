@@ -1,0 +1,45 @@
+<div>
+	<div class="row">
+		<ol class="breadcrumb">
+			<li><a href="#/">主面板</a></li>
+			<li><a href="#/">设备</a></li>
+			<li class="active">主控机：{{serialNumber}}</li>
+		</ol>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th><span class="glyphicon glyphicon-phone"></span>&nbsp;屏幕信息</th>
+				<th><span class="glyphicon glyphicon-tasks"></span>&nbsp;控制板</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td width="{{control_td_width}}">
+					<canvas id="device_canvas" ng-style="canvas_style"></canvas>
+					<div ng-style="control_panel_style">
+						<div class="col-md-4">
+							<a class="btn btn-default btn-block" href="javascript:;" role="button" ng-click="keyDownBack()">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+						</div>
+						<div class="col-md-4">
+							<a class="btn btn-default btn-block" href="javascript:;" role="button" ng-click="keyDownHome()">
+								<span class="glyphicon glyphicon-home"></span>
+							</a>
+						</div>
+						<div class="col-md-4">
+							<a class="btn btn-default btn-block" href="javascript:;" role="button" ng-click="keyDownMenu()">
+								<span class="glyphicon glyphicon-align-justify"></span>
+							</a>
+						</div>
+					</div>
+				</td>
+				<td ng-controller="deviceBoardController" ng-include="'views/device_board.html?v=1'">
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+</div>

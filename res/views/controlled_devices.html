@@ -1,0 +1,12 @@
+<div ng-style="container_style">
+	<div ng-if="controlledSerialNumberList && controlledSerialNumberList.length===1">
+		<h1>单控模式</h1>
+	</div>
+	<div class="controlled_device_item" ng-repeat="device in devices" ng-controller="deviceScreenItemController"
+		ng-init="init(device.serialNumber,item_container_style.height)" ng-style="item_container_style" ng-click="$parent.changeMainControl(device.serialNumber)" ng-mouseenter="is_mouse_enter=true" ng-mouseleave="is_mouse_enter=false">
+		<canvas id="canvas_item_{{device.serialNumber}}" class="screen_item_canvas">
+		</canvas>
+
+		<p class="title" ng-show="is_mouse_enter === true">{{device.serialNumber}}</p>
+	</div>
+</div>

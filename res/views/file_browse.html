@@ -1,0 +1,61 @@
+<div class="file-browse-toolbar" role="toolbar" aria-label="...">
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-sm btn-default" ng-click="goBackPath(current_path)"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;返回上一级</button>
+	</div>
+	<div class="btn-group" role="group" aria-label="...">
+		<form enctype="multipart/form-data" method="post" ng-upload="complete(content)" action="/upload.cgi" id="file_browse_form_upload">
+			<span class="form-file-upload2">
+				<button type="button" class="btn btn-sm btn-default">
+						<span class="glyphicon glyphicon-cloud-upload"></span>
+						&nbsp;浏览
+						<input name="file" type="file" class="upload" value="" onchange="angular.element(this).scope().inputFileChange(this)" />
+				</button>
+			</span>
+			<span class="form-file-upload2">
+				<input type="submit" class="btn btn-sm btn-default" value="上传" />
+			</span>
+		</form>
+	</div>
+	<!--<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-sm btn-default" ng-click="goBackPath(current_path)"><span class="glyphicon glyphicon-cloud-download"></span>&nbsp;下载文件</button>
+	</div>-->
+	&nbsp;&nbsp;
+	<span>
+		当前路径：{{current_path}}
+	</span>
+</div>
+<div ng-style="container_style">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>文件名</th>
+				<th>权限</th>
+				<th>创建时间</th>
+				<th>大小</th>
+				<th>拥有者</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="file in files">
+				<td ng-switch="file.type">
+					<a href="javascript:;" ng-switch-when="0">
+						<span class="glyphicon glyphicon-file"></span> &nbsp;{{file.name}}
+					</a>
+					<a href="javascript:;" ng-switch-when="1" ng-click="goToPath(current_path+file.name+'/')">
+						<span class="glyphicon glyphicon-folder-close"></span> &nbsp;{{file.name}}
+					</a>
+					<a href="javascript:;" ng-switch-when="2" ng-click="goToPath(current_path+file.name+'/')">
+						<span class="glyphicon glyphicon-folder-close"></span> &nbsp;{{file.name}}
+					</a>
+					<a href="javascript:;" ng-switch-default>
+						<span class="glyphicon glyphicon-exclamation-sign"></span> &nbsp;{{file.name}}
+					</a>
+				</td>
+				<td>{{file.permissions}}</td>
+				<td>{{file.date}}&nbsp;{{file.time}}</td>
+				<td>{{file.size}}</td>
+				<td>{{file.group}}:{{file.owner}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

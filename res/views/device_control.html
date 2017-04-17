@@ -1,0 +1,55 @@
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					<span class="glyphicon glyphicon-phone"></span>&nbsp;主控机:{{serialNumber}}
+					<a class="pull-right btn btn-default btn-xs" href="javascript:;" role="button" ng-click="refreshScreen()" title="重新启动屏幕监控">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</a>
+					&nbsp;
+					<a class="pull-right btn-xs" href="javascript:;" role="button" ng-click="changeControlMode()">
+						<span ng-if="isMultiControlMode" class="btn btn-danger btn-xs" >群控模式</span>
+						<span ng-if="!isMultiControlMode" class="btn btn-success btn-xs">单控模式</span>
+					</a>
+				</th>
+				<th><span class="glyphicon glyphicon-tasks"></span>&nbsp;操控版</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="canvas_td" width="{{control_td_width}}">
+					<canvas id="device_canvas" ng-style="canvas_style"></canvas>
+					<div ng-style="control_panel_style">
+						<div class="col-md-4">
+							<button class="btn btn-default btn-block" role="button" ng-click="keyDownBack()">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default btn-block" role="button" ng-click="keyDownHome()">
+								<span class="glyphicon glyphicon-home"></span>
+							</button>
+						</div>
+						<div class="col-md-4">
+							<buttona class="btn btn-default btn-block" role="button" ng-click="keyDownMenu()">
+								<span class="glyphicon glyphicon-align-justify"></span>
+							</button>
+						</div>
+					</div>
+				</td>
+				<td >
+					<div bs-tabs bs-active-pane="device_board">
+						<div data-title="基础操作" name="device_board" class="active" disabled="false" bs-pane ng-controller="deviceBoardController" ng-include="'views/device_board.html?v='+rand_num">
+						</div>
+						<div data-title="文件管理" name="file_manager" disabled="false" bs-pane ng-controller="fileBrowseController" ng-include="'views/file_browse.html?v='+rand_num">
+						</div>
+						<div data-title="群控列表" name="control_list" disabled="false" bs-pane ng-controller="controlledDevicesController" ng-include="'views/controlled_devices.html?v='+rand_num">
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+</div>

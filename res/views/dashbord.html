@@ -1,0 +1,34 @@
+<div class="row">
+	<p>
+		&nbsp;&nbsp;总设备数：<span class="badge">{{devices_count}}</span> &nbsp;|&nbsp;
+		<button class="btn btn-default" ng-click="addAllToGroup()">把所有设备添加到群控</button>
+		<button class="btn btn-default" ng-click="gotoControl()">开始控制</button>
+	</p>
+	<hr />
+</div>
+<div>
+	<div class="dashboard_device_item" ng-repeat="device in devices">
+		<a href="javascript:;" class="thumbnail">
+			<img src="img/smartphone.svg"/>
+			<span ng-if="device.apiLevel">
+				<div class="dashboard_device_id" ng-if="device.deviceID && device.deviceID.length>0">{{device.deviceID}}</div>
+				<div class="dashboard_device_id" ng-if="!device.deviceID || device.deviceID.length==0">{{device.serialNumber}}</div>
+			</span>
+			<span ng-if="!device.apiLevel">
+				<div class="dashboard_device_id">上线中</div>
+			</span>
+		</a>
+
+		<a ng-if="device.apiLevel && !control_devices[device.serialNumber]" href="javascript:;" class="btn btn-sm btn-default" role="button" ng-click="addToGroup(device.serialNumber)"><span class="glyphicon glyphicon-plus"></span>&nbsp;群控</a>
+		<span ng-if="device.apiLevel && control_devices[device.serialNumber]">
+			<a href="javascript:;" class="btn btn-sm btn-success" role="button" ng-click="removeFromGroup(device.serialNumber)"><span class="glyphicon glyphicon-minus"></span>&nbsp;群控</a>
+
+			<a ng-if="main_control_device_serial != device.serialNumber" href="javascript:;" class="btn btn-sm btn-primary pull-right"
+				role="button" ng-click="toggleMainControl(device.serialNumber)">主控</a>
+			<a ng-if="main_control_device_serial == device.serialNumber" href="javascript:;" class="btn btn-sm btn-warning pull-right"
+				role="button" ng-click="toggleMainControl(device.serialNumber)">
+				<span class="glyphicon glyphicon-ok"></span> 主控
+			</a>
+		</span>
+	</div>
+</div>

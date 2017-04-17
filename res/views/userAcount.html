@@ -1,0 +1,40 @@
+<div class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="aside-title">用户信息</h4>
+            </div>
+            <div class="aside-body">
+                <h3>{{username}}</h3>
+                <br/>
+                <br/>
+                <h4>可控手机数量：{{device_limit}}</h4>
+                <br/>
+                <h4>到期之间：{{out_time}}</h4>
+                <br/>
+
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">旧密码</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="oldPassword">
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">新密码</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="newPassword1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">再确认一次</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="newPassword2">
+                    </div>
+                    <br/>
+                    <button class="btn btn-default" type="button" ng-click="changePassword(username,oldPassword,newPassword1,newPassword2)">修改</button>
+                </form>
+            </div>
+            <div class="aside-footer">
+
+            </div>
+        </div>
+    </div>
+</div>

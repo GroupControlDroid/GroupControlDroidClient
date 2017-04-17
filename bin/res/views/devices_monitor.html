@@ -1,0 +1,33 @@
+<div>
+	<ol class="breadcrumb">
+		<li><a href="#">多屏监控</a></li>
+		<li><a href="#">共{{devices_total}}台设备</a></li>
+		<li><a href="#">第{{page}}页</a></li>
+	</ol>
+	<center>
+		<div ng-style="canvas_container_style">
+			<div class="col-md-{{class_col}} device_screen_box" ng-repeat="device in devices" ng-controller="deviceScreenItemController" ng-init="init(device.serialNumber,item_container_style.height)" ng-style="item_container_style">
+				<canvas id="canvas_item_{{device.serialNumber}}" ng-style="canvas_style" class="screen_item_canvas">
+				</canvas>
+				<p>{{device.deviceID}}</p>
+			</div>
+		</div>
+		<nav>
+			<ul class="pagination">
+				<li>
+					<a href="#/devices_monitor/{{page-1}}/{{row}}/{{col}}" ng-if="page-1 >= 1" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li ng-repeat="page_num in page_num_array">
+					<a href="#/devices_monitor/{{page_num}}/{{row}}/{{col}}">{{page_num}}</a>
+				</li>
+				<li>
+					<a href="#/devices_monitor/{{page+1}}/{{row}}/{{col}}" ng-if="page+1 <= page_total" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</center>
+</div>

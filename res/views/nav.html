@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default" role="navigation" bs-navbar ng-controller="navController">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/"><img src="img/logo.png" alt="控机大师" height="26px" /></a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li data-match-route="/$"><a href="#/">主面板</a></li>
+				<li data-match-route="/devices_monitor/*"><a href="#/devices_monitor/1/2/6">多屏监控</a></li>
+				<li data-match-route="/devices_wall/"><a href="#/devices_wall/1">设备墙</a></li>
+				<li data-match-route="/devices_group/*"><a href="#/devices_group/-1">设备组管理</a></li>
+				<li><a href="http://www.qkmoc.com" target="_blank">官方网站</a></li>
+			</ul>
+			<!--<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="搜索设备">
+				</div>
+				<button type="submit" class="btn btn-default">搜索</button>
+			</form>-->
+			<ul class="nav navbar-nav navbar-right"  bs-aside="aside" data-template-url="views/userAcount.html" data-container="body">
+				<li><a href="javascript:;">账号：{{username}}&nbsp;<span class="glyphicon glyphicon-triangle-bottom"></span></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /.container-fluid -->
+</nav>

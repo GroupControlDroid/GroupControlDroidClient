@@ -1,0 +1,25 @@
+{
+  "name": "moc_gui",
+  "version": "1.0.0",
+  "description": "Moc App Gui",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ./ --disable-http-cache",
+    "dev": "electron ./ --disable-http-cache"
+  },
+  "keywords": [
+    "moc"
+  ],
+  "author": "yunquan",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "http://www.qkmoc.com"
+  },
+  "homepage": "http://www.qkmoc.com",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "jquery": "2.1.0"
+  }
+}

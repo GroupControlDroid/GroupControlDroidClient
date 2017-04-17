@@ -1,0 +1,140 @@
+<br/>
+<div class="row">
+	<div class="col-md-3">
+		<p><b>Serial：</b>{{serialNumber}}</p>
+	</div>
+	<div class="col-md-3">
+		<p><b>串号：</b>{{deviceID}}</p>
+	</div>
+	<div class="col-md-3">
+		<p><b>制式：</b>{{phoneType}}</p>
+	</div>
+	<div class="col-md-3">
+		<p><b>型号：</b>{{productModel}}</p>
+	</div>
+</div>
+<hr/>
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default" ng-click="btnSendKey('KEYCODE_POWER')">
+			<span class="glyphicon glyphicon-off"></span>&nbsp;电源
+		</button>
+	</div>
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default" ng-click="btnSendKey('KEYCODE_VOLUME_UP')">
+			<span class="glyphicon glyphicon-plus"></span>&nbsp;音量
+		</button>
+		<button type="button" class="btn btn-default" ng-click="btnSendKey('KEYCODE_VOLUME_DOWN')">
+			<span class="glyphicon glyphicon-minus"></span>&nbsp;音量
+		</button>
+	</div>
+</div>
+<hr/>
+
+<div class="row">
+	<div class="col-md-3">
+		<form action="/upload.cgi" ng-upload="complete(content)" enctype="multipart/form-data" method="post">
+			<input placeholder="APK安装" class="form-control" disabled="disabled" ng-model="upload_file_path" />
+			<div class="form-file-upload btn btn-primary btn-sm">
+				<span>浏览</span>
+				<input name="file" type="file" class="upload" onchange="angular.element(this).scope().inputFileChange(this)" value="" />
+			</div>
+			<a role="button" class="btn btn-sm btn-success" href="javascript:;" upload-submit>开始安装APK</a>
+		</form>
+	</div>
+	<div class="col-md-9">
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="input-website-address">网址：</label>
+				<input type="text" class="form-control" id="input-website-address" placeholder="http://www.baidu.com" ng-model="input_website_address"
+				/>
+			</div>
+			<button type="button" class="btn btn-sm btn-default" ng-click="openWebsite(input_website_address)">打开</button>
+		</form>
+
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="input-text">输入：</label>
+				<input type="text" class="form-control" id="input-text" ng-model="input_text" />
+			</div>
+			<button type="button" class="btn btn-sm btn-default" ng-click="sendTextToDevice(input_text)">发送</button>
+			<!--<button type="button" class="btn btn-sm btn-default" ng-click="executeCommand('ime set com.qkmoc.moc/.core.AdbIME')">开启输入法</button>-->
+		</form>
+	</div>
+</div>
+<hr/>
+
+<div class="panel panel-default">
+	<div class="panel-heading">启动常见应用</div>
+	<div class="panel-body">
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qkmoc.moc','com.qkmoc.moc.view.IdentityActivity')">
+			<img src="img/logo.jpg">
+			<p>群控大师</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qkmoc.moc','com.qkmoc.moc.view.ContactActivity')">
+			<img src="img/logo.jpg">
+			<p>导入通讯录</p>	
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.tencent.mm','com.tencent.mm.ui.LauncherUI')">
+			<img src="img/weixin.png">
+			<p>微信</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.aipapa.all','com.test.load.LoadActivity')">
+			<img src="img/qntxw.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>全能营销王</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.zaofenshenqi.xingzhan','com.zaofenshenqi.xingzhan.MainActivity')">
+			<img src="img/xczf.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>星辰造粉</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.tencen1.mm','com.tencen1.mm.ui.LauncherUI')">
+			<img src="img/wechat626.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>微信6.26</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.youiit.zbk.wbl60','com.youiit.zbk.login.LoginActivity')">
+			<img src="img/yakk.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>云 快客</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.tencent.mm2','com.tencent.mm.ui.LauncherUI')">
+			<img src="img/wxzg.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>微商中国</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qunfa.multplugin01','com.test.load.LoadActivity')">
+			<img src="img/az_pink.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>爱转·粉色</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qunfa.multplugin02','com.test.load.LoadActivity')">
+			<img src="img/az_black.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>爱转·黑色</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qunfa.multplugin03','com.test.load.LoadActivity')">
+			<img src="img/az_red.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>爱转·红色</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qunfa.multplugin04','com.test.load.LoadActivity')">
+			<img src="img/az_yellow.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>爱转·黄色</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qunfa.multplugin05','com.test.load.LoadActivity')">
+			<img src="img/az_blue.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>爱转·蓝色</p>
+		</a>
+		<a class="board_app_icon" href="javascript:;" ng-click="openApp('com.qunfa.multplugin06','com.test.load.LoadActivity')">
+			<img src="img/az_purple.png" alt="此程序安装速度较慢，请耐心等待">
+			<p>爱转·紫色</p>
+		</a>
+	</div>
+</div>
+<div class="panel panel-default" ng-if="control_id">
+	<div class="panel-body">
+		<b>控制&nbsp;id：</b><span>{{control_id}}</span>&nbsp;&nbsp;&nbsp;
+
+		<b>电量：</b><span>{{batteryLevel}}%</span>&nbsp;&nbsp;&nbsp;
+
+		<b>电源来源：</b><span>{{batterySourceLabel}}</span>&nbsp;&nbsp;&nbsp;
+
+		<b>飞行模式：</b><span>{{airplane}}</span>&nbsp;&nbsp;&nbsp;
+
+		<b>WIFI：</b><span>{{wifi}}</span>
+	</div>
+</div>
